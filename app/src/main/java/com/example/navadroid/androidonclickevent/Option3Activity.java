@@ -1,10 +1,12 @@
 package com.example.navadroid.androidonclickevent;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -14,6 +16,7 @@ public class Option3Activity extends AppCompatActivity implements View.OnClickLi
 
     private EditText etInput;
     private TextView tvOutput;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,12 @@ public class Option3Activity extends AppCompatActivity implements View.OnClickLi
             case R.id.btn_process_3:
                 greet();
                 break;
+            case R.id.btn_next3:
+                startActivity(new Intent(getApplicationContext(),Option4Activity.class));
+                break;
+            case R.id.btn_prev3:
+                startActivity(new Intent(getApplicationContext(),Option2Activity.class));
+                break;
         }
         hideKeyboardInput(v);
     }
@@ -39,11 +48,14 @@ public class Option3Activity extends AppCompatActivity implements View.OnClickLi
     private void bindView(){
         etInput = (EditText) findViewById(R.id.et_input_3);
         tvOutput = (TextView) findViewById(R.id.tv_body_3);
+
     }
 
     private void initView(){
         // To register click event to view
         findViewById(R.id.btn_process_3).setOnClickListener(this); // Think about... Who is "this"?
+        findViewById(R.id.btn_next3).setOnClickListener(this);
+        findViewById(R.id.btn_prev3).setOnClickListener(this);
     }
 
     // To greet the user
